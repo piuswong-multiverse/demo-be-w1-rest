@@ -1,0 +1,27 @@
+{
+  "name": "be-w1-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piuswong-multiverse/be-w1-rest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piuswong-multiverse/be-w1-rest/issues"
+  },
+  "homepage": "https://github.com/piuswong-multiverse/be-w1-rest#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "node": "^18.13.0",
+    "nodemon": "^2.0.20",
+    "sequelize": "^6.28.0",
+    "sqlite3": "^5.1.4"
+  }
+}
