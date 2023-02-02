@@ -2,10 +2,21 @@ const express = require('express');
 const router = express.Router();
 const { Dog } = require('../db/models/index');
 
+// get all dogs OR get specific dogs queried
 router.get('/', async (req, res) => {
-
-    const dogs = await Dog.findAll({})
-    res.send(dogs);
+    // if there are no query parameters, display all dogs
+    if(Object.keys(req.query).length===0){
+        const dogs = await Dog.findAll({});
+        res.send(dogs);    
+    } else {
+        // if there ARE query params, send specific dogs
+        const dogs = await Dog.findAll({
+            where: {
+                name: req.query.name
+            }
+        })
+        res.send(dogs);
+    }
 
 })
 
