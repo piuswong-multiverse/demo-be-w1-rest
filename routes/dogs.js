@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Dog } = require('../db/models/index');
+const { Op } = require('sequelize');
 
 // get all dogs OR get specific dogs queried
 router.get('/', async (req, res) => {
@@ -10,12 +11,27 @@ router.get('/', async (req, res) => {
         res.send(dogs);    
     } else {
         // if there ARE query params, send specific dogs
-        const dogs = await Dog.findAll({
-            where: {
-                name: req.query.name
+        // define filter object:
+        const where = {};
+        for(const key of ['name','description','breed','color'] ){
+            if(req.query[key]){
+                where[key] = {
+                    // special sequelize keywords for filtering
+                    [Op.like]: `%${req.query[key]}` // search within string for text
+                }
             }
-        })
+        }
+        const dogs = await Dog.findAll({
+            where
+        });
         res.send(dogs);
+
+        // const dogs = await Dog.findAll({
+        //     where: {
+        //         name: req.query.name
+        //     }
+        // })
+        // res.send(dogs);
     }
 
 })
