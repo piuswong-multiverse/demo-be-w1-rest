@@ -5,9 +5,9 @@ const router = express.Router();
 // const showsRouter = require('./shows');
 // router.use('/shows', showsRouter); 
 
-router.use('/dog', require('./dogs'));
-router.use('/getshowsfrommodel', require('./shows'));
-router.use('/POKEMON', require('./pokemon'));
-router.use('/trainer', require('./trainers'));
+router.use('/dogs', require('./dogs'));
+router.use('/shows', require('./shows'));
+router.use('/pokemon', require('./pokemon'));
+router.use('/trainers', require('./trainers'));
 
 module.exports = router;
