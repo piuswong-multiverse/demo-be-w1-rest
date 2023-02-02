@@ -17,13 +17,14 @@ router.get('/', async (req, res) => {
             if(req.query[key]){
                 where[key] = {
                     // special sequelize keywords for filtering
-                    [Op.like]: `%${req.query[key]}` // search within string for text
+                    [Op.like]: `%${req.query[key]}%` // search within string for text
                 }
             }
         }
         const dogs = await Dog.findAll({
             where
         });
+
         res.send(dogs);
 
         // const dogs = await Dog.findAll({
